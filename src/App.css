@@ -30,6 +30,10 @@
   margin: 10px 0;
 }
 
+.radio-item label {
+  margin: 0 0 0 15px;
+}
+
 .button-group {
   position: absolute;
   bottom: 20px;
