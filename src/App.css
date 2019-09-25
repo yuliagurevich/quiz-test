@@ -1,22 +1,46 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  border: 1px solid #eee;
+  margin: 40px auto;
+  padding: 25px;
+}
+
+.question,
+.result {
+  margin: 0 0 10px 0;
+}
+
+.result {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.radio-group {
+  margin: 0 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.radio-item {
+  margin: 10px 0;
+}
+
+.button-group {
+  position: absolute;
+  bottom: 20px;
+  width: calc(100% - 50px);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  text-align: center;
 }
 
-.App-link {
-  color: #09d3ac;
+.button {
+  display: block;
+  margin: 0;
+  width: 80px;
 }
