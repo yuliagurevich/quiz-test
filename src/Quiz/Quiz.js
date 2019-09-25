@@ -8,7 +8,7 @@ const quiz = props => {
 
   return (
     <>
-      <p class="question">{quiz.question}</p>
+      <p className="question">{quiz.question}</p>
       <div className="radio-group">
         {renderAnswers(quiz, currentValue, onRadioChange)}
       </div>
