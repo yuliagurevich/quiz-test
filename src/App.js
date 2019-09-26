@@ -67,15 +67,15 @@ class App extends Component {
 
       let _answers = [...answers];
       _answers = _answers.filter((answer, index) => answer === correctAnswers[index]);
-  
+
       const questionsNumber = this.state.data.length;
       let grade = _answers.length / questionsNumber * 100;
-  
+
       this.setState({ grade });
     }
 
     let emptyAnswersIndexes = [];
-    
+
     answers.forEach((answer, index) => {
       if (answer === null) {
         emptyAnswersIndexes.push(index + 1);
@@ -133,26 +133,32 @@ class App extends Component {
     />;
 
     if (grade !== null) return (
-      <div className="card">
-        <p className="result">Your grade is: {grade}</p>
-        <div className="button-group">
-          {TryAgainButton}
+      <>
+        <div className="card">
+          <h1 className="header">Result</h1>
+          <p className="result">Your grade is: {grade}</p>
+          <div className="button-group">
+            {TryAgainButton}
+          </div>
         </div>
-      </div>
+      </>
     );
 
     return (
-      <div className="card">
-        <Quiz
-          quiz={data[currentCardIndex]}
-          currentValue={answers[currentCardIndex]}
-          onRadioChange={this.handleAnswerChange}
-        />
-        <div className="button-group">
-          {PrevButton}
-          {isDone ? DoneButton : NextButton}
+      <>
+        <div className="card">
+          <h1 className="header">Quiz: {currentCardIndex + 1} of {data.length}</h1>
+          <Quiz
+            quiz={data[currentCardIndex]}
+            currentValue={answers[currentCardIndex]}
+            onRadioChange={this.handleAnswerChange}
+          />
+          <div className="button-group">
+            {PrevButton}
+            {isDone ? DoneButton : NextButton}
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
