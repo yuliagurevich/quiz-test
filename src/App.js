@@ -35,7 +35,7 @@ class App extends Component {
     this.state = {
       data,
       currentCardIndex: 0,
-      answers: new Array(data.length)/* .fill(null) */,
+      answers: new Array(data.length).fill(null),
       grade: null,
     };
   }
@@ -75,8 +75,10 @@ class App extends Component {
     }
 
     let emptyAnswersIndexes = [];
+    console.log(answers);
+    
     answers.forEach((answer, index) => {
-      if (answer === undefined) {
+      if (answer === null) {
         emptyAnswersIndexes.push(index + 1);
       }
     });
@@ -95,7 +97,7 @@ class App extends Component {
   handleRestart = () => {
     this.setState({
       currentCardIndex: 0,
-      answers: new Array(data.length)/* .fill(null) */,
+      answers: new Array(data.length).fill(null),
       grade: null,
     })
   }
