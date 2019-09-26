@@ -9,9 +9,9 @@ import "./App.css";
 const App = () => {
   return (
     <Router>
-      <header>
+      <header id="main-header"> 
         <nav>
-          <ul>
+          <ul id="main-menu-container">
             <li><NavLink to="/">About</NavLink></li>
             <li><NavLink to="/quizes">Quiz</NavLink></li>
           </ul>
