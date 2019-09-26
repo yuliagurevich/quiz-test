@@ -62,15 +62,28 @@ class App extends Component {
   handleCalculateGrade = () => {
     const { data, answers } = this.state;
 
-    const correctAnswers = data.map((quiz) => quiz.correctAnswer);
-    let _answers = [...answers];
-    _answers = _answers.filter((answer, index) => answer === correctAnswers[index]);
+    const isWhole = !answers.includes(undefined);
 
-    const questionsNumber = this.state.data.length;
+    const calculate = () => {
+      const correctAnswers = data.map((quiz) => quiz.correctAnswer);
+      
+      let _answers = [...answers];
+      _answers = _answers.filter((answer, index) => answer === correctAnswers[index]);
+  
+      const questionsNumber = this.state.data.length;
+      let grade = _answers.length / questionsNumber * 100;
+  
+      this.setState({ grade });
+    }
 
-    let grade = _answers.length / questionsNumber * 100;
-
-    this.setState({ grade });
+    if (isWhole) {
+      calculate();
+    } else {
+      const shouldCalculate = window.confirm("You left some questions without answers. Are you sure you want to calculate your grade?");
+      if (shouldCalculate) {
+        calculate();
+      }
+    }
   };
 
   handleRestart = () => {
