@@ -1,32 +1,11 @@
 import React, { Component } from "react";
 
+import data from './data.json';
+
 import Quiz from "./Quiz/Quiz";
 import Button from "./Button/Button";
 
 import "./App.css";
-
-const data = [
-  {
-    question: "Q1",
-    answers: ["A1", "A2", "A3", "A4"],
-    correctAnswer: "A3"
-  },
-  {
-    question: "Q2",
-    answers: ["A1", "A2", "A3"],
-    correctAnswer: "A1"
-  },
-  {
-    question: "Q3",
-    answers: ["A1", "A2", "A3", "A4"],
-    correctAnswer: "A4"
-  },
-  {
-    question: "Q4",
-    answers: ["A1", "A2"],
-    correctAnswer: "A2"
-  }
-];
 
 class App extends Component {
   constructor(props) {
