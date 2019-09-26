@@ -75,7 +75,6 @@ class App extends Component {
     }
 
     let emptyAnswersIndexes = [];
-    console.log(answers);
     
     answers.forEach((answer, index) => {
       if (answer === null) {
@@ -90,6 +89,10 @@ class App extends Component {
       const shouldCalculate = window.confirm(`The following questions were left without answers: ${indexes}. Are you sure you want to calculate your grade?`);
       if (shouldCalculate) {
         calculate();
+      } else {
+        this.setState({
+          currentCardIndex: emptyAnswersIndexes[0] - 1
+        });
       }
     }
   };
