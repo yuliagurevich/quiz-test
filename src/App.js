@@ -62,11 +62,9 @@ class App extends Component {
   handleCalculateGrade = () => {
     const { data, answers } = this.state;
 
-    const isWhole = !answers.includes(undefined);
-
     const calculate = () => {
       const correctAnswers = data.map((quiz) => quiz.correctAnswer);
-      
+
       let _answers = [...answers];
       _answers = _answers.filter((answer, index) => answer === correctAnswers[index]);
   
@@ -76,10 +74,18 @@ class App extends Component {
       this.setState({ grade });
     }
 
-    if (isWhole) {
+    let emptyAnswersIndexes = [];
+    answers.forEach((answer, index) => {
+      if (answer === undefined) {
+        emptyAnswersIndexes.push(index + 1);
+      }
+    });
+
+    if (emptyAnswersIndexes.length === 0) {
       calculate();
     } else {
-      const shouldCalculate = window.confirm("You left some questions without answers. Are you sure you want to calculate your grade?");
+      const indexes = emptyAnswersIndexes.join(', ');
+      const shouldCalculate = window.confirm(`The following questions were left without answers: ${indexes}. Are you sure you want to calculate your grade?`);
       if (shouldCalculate) {
         calculate();
       }
