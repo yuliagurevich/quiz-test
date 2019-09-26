@@ -17,7 +17,7 @@ const App = () => {
           </ul>
         </nav>
       </header>
-      <main>
+      <main className="main-container">
         <Switch>
           <Route exact path="/" component={About} />
           <Route path="/quizes" component={Quizes} />
