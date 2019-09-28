@@ -7,7 +7,7 @@
             "A3",
             "A4"
         ],
-        "correctAnswers": "A3"
+        "correctAnswers": ["A3"]
     },
     {
         "question": "Q2",
@@ -26,7 +26,7 @@
             "A1",
             "A2"
         ],
-        "correctAnswers": "A1"
+        "correctAnswers": ["A1"]
     },
     {
         "question": "Q4",

@@ -43,7 +43,7 @@ const card = ({
         <Quiz
             quiz={data[currentCardIndex]}
             currentValue={answers[currentCardIndex]}
-            onRadioChange={handleAnswerChange}
+            onInputChange={handleAnswerChange}
         />
         <div className="button-group">
             {PrevButton}

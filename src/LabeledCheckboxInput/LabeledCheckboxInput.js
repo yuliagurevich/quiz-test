@@ -4,12 +4,12 @@ import './style.css';
 
 const labeledCheckboxInput = ({ id, name, value, currentValue, onChange }) => {
     return (
-        <div>
+        <div className="radio-item">
             <input
-                id
+                id={id}
                 type="checkbox"
-                name
-                value
+                name={name}
+                value={value}
                 checked={value === currentValue}
                 onChange={onChange}
             />
