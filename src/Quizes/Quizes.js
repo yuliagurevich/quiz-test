@@ -73,16 +73,18 @@ class Quizes extends Component {
                 if (userAnswers[i] === null) {
                     userAnswers[i] = [];
                 }
-                
+
                 if (correctCardAnswers.length === 1) {
-                    userAnswers[i][0] === correctCardAnswers[0] && correctAnswersNumber++;
+                    userAnswers[i][0] === correctCardAnswers[0]
+                        ? correctAnswersNumber++
+                        : correctUserAnswersNumber -= correctUserAnswersNumber/10;
                 } else {
                     for (var j = 0; j < correctCardAnswers.length; j++) {
                         const cardCorrectAnswer = correctCardAnswers[j];
                         if (userAnswers[i].includes(cardCorrectAnswer)) {
                             correctUserAnswersNumber++;
                         } else {
-                            correctUserAnswersNumber -= 0.5;
+                            correctUserAnswersNumber -= correctUserAnswersNumber/10;
                         }
                     }
                 }
