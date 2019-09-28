@@ -46,7 +46,7 @@ class Quizes extends Component {
         }
 
         _answers[currentCardIndex] = cardAnswers;
-        this.setState({ answers: _answers }, () => console.table(this.state.answers));
+        this.setState({ answers: _answers });
     };
 
     handlePrevClick = () => {
@@ -61,13 +61,29 @@ class Quizes extends Component {
         const { data, answers } = this.state;
 
         const calculate = () => {
-            const correctAnswers = data.map((quiz) => quiz.correctAnswer);
+            let userAnswers = [...answers];
+            
+            let correctAnswersNumber = 0;
+            let correctUserAnswersNumber = 0;
+            
+            for (var i = 0; i < data.length; i++) {
+                const correctCardAnswers = data[i].correctAnswers;
+                correctAnswersNumber += correctCardAnswers.length;
+                if (correctCardAnswers.length === 1) {
+                    userAnswers[i][0] === correctCardAnswers[0] && correctAnswersNumber++;
+                } else {
+                    for (var j = 0; j < correctCardAnswers.length; j++) {
+                        const cardCorrectAnswer = correctCardAnswers[j];
+                        if (userAnswers[i].includes(cardCorrectAnswer)) {
+                            correctUserAnswersNumber++;
+                        } else {
+                            correctUserAnswersNumber -= 0.5;
+                        }
+                    }
+                }
+            }
 
-            let _answers = [...answers];
-            _answers = _answers.filter((answer, index) => answer === correctAnswers[index]);
-
-            const questionsNumber = this.state.data.length;
-            let grade = _answers.length / questionsNumber * 100;
+            let grade = (correctUserAnswersNumber / correctAnswersNumber * 100).toFixed(1);
 
             this.setState({ grade });
         }
