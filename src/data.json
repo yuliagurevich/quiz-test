@@ -7,33 +7,37 @@
             "A3",
             "A4"
         ],
-        "correctAnswer": "A3"
+        "correctAnswers": "A3"
     },
     {
         "question": "Q2",
         "answers": [
             "A1",
             "A2",
-            "A3"
+            "A3",
+            "A4",
+            "A5"
         ],
-        "correctAnswer": "A1"
+        "correctAnswers": ["A1", "A4", "A5"]
     },
     {
         "question": "Q3",
         "answers": [
             "A1",
-            "A2",
-            "A3",
-            "A4"
+            "A2"
         ],
-        "correctAnswer": "A4"
+        "correctAnswers": "A1"
     },
     {
         "question": "Q4",
         "answers": [
             "A1",
-            "A2"
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6"
         ],
-        "correctAnswer": "A2"
+        "correctAnswers": ["A2", "A2", "A5"]
     }
 ]
