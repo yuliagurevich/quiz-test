@@ -10,7 +10,7 @@ const labeledCheckboxInput = ({ id, name, value, currentValue, onChange }) => {
                 type="checkbox"
                 name={name}
                 value={value}
-                checked={value === currentValue}
+                checked={currentValue === null ? false : currentValue.includes(value)}
                 onChange={onChange}
             />
             <label htmlFor={id}>{value}</label>

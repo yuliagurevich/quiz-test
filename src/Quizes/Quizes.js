@@ -19,14 +19,34 @@ class Quizes extends Component {
     }
 
     handleAnswerChange = e => {
-        const { answers, currentCardIndex } = this.state;
+        const { data, answers, currentCardIndex } = this.state;
 
-        const userAnswer = e.target.value;
+        const quiz = data[currentCardIndex];
+        const hasOneAnswer = quiz.correctAnswers.length === 1;
 
         let _answers = [...answers];
-        _answers[currentCardIndex] = userAnswer;
+        let cardAnswers = _answers[currentCardIndex];
 
-        this.setState({ answers: _answers });
+        const value = e.target.value;
+
+        if (cardAnswers === null) {
+            cardAnswers = [];
+            cardAnswers.push(value);
+        } else {
+            if (hasOneAnswer) {
+                cardAnswers[0] = value;
+            } else {
+                const index = cardAnswers.indexOf(value);
+                if (index === -1) {
+                    cardAnswers.push(value);
+                } else {
+                    cardAnswers.splice(index, 1);
+                }
+            }
+        }
+
+        _answers[currentCardIndex] = cardAnswers;
+        this.setState({ answers: _answers }, () => console.table(this.state.answers));
     };
 
     handlePrevClick = () => {

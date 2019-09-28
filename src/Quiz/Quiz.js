@@ -27,6 +27,7 @@ const quiz = props => {
 };
 
 const renderCheckboxes = (quiz, currentValue, onInputChange) => {
+    // current value now should be an array
     return quiz.answers.map(answer => <LabeledCheckboxInput
         key={answer}
         id={answer}
@@ -38,6 +39,7 @@ const renderCheckboxes = (quiz, currentValue, onInputChange) => {
 }
 
 const renderRadioButtons = (quiz, currentValue, onInputChange) => {
+    // current value now should be an array
     return quiz.answers.map(answer => <LabeledRadioInput
         key={answer}
         id={answer}

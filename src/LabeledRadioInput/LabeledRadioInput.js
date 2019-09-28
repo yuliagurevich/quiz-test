@@ -8,7 +8,7 @@ const labeledRadioInput = ({ id, name, value, currentValue, onChange }) => {
                 type="radio"
                 name={name}
                 value={value}
-                checked={value === currentValue}
+                checked={currentValue === null ? false : currentValue.includes(value)}
                 onChange={onChange}
             />
             <label htmlFor={id}>{value}</label>
