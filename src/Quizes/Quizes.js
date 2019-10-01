@@ -133,15 +133,22 @@ class Quizes extends Component {
             }
 
             if (correctCardAnswers.length === 1) {
-                answers[i][0] === correctCardAnswers[0]
-                    ? correctAnswersNumber++
-                    : correctUserAnswersNumber -= correctUserAnswersNumber/10;
+                if (answers[i][0] === correctCardAnswers[0]) {
+                    correctUserAnswersNumber++;
+                    console.log('+ 1');
+                } else {
+                    console.log('0');
+                }
             } else {
                 for (var j = 0; j < correctCardAnswers.length; j++) {
                     const cardCorrectAnswer = correctCardAnswers[j];
-                    if (answers[i].includes(cardCorrectAnswer)) {
+                    if (answers[i].length === 0) {
+                        console.log('0');
+                    }else if (answers[i].includes(cardCorrectAnswer)) {
                         correctUserAnswersNumber++;
+                        console.log('+ 1');
                     } else {
+                        console.log('- 10%');
                         correctUserAnswersNumber -= correctUserAnswersNumber/10;
                     }
                 }
@@ -149,6 +156,7 @@ class Quizes extends Component {
         }
 
         let grade = (correctUserAnswersNumber / correctAnswersNumber * 100).toFixed(1);
+        
         return grade;
     }
 
