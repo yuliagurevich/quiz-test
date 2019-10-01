@@ -48,7 +48,6 @@ body {
 .card {
   position: relative;
   width: 400px;
-  height: 400px;
   border: 1px solid #87807D;
   box-shadow: 2px 3px 2px #595553;
   margin: 40px auto;
@@ -78,8 +77,6 @@ body {
 }
 
 .button-group {
-  position: absolute;
-  bottom: 20px;
   width: calc(100% - 50px);
   display: flex;
   justify-content: space-around;

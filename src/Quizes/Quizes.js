@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+import H1 from '../H1/H1';
 import Card from '../Card/Card';
+import Button from '../Button/Button';
+import Controls from '../Controls/Controls';
 
 import data from '../data.json';
 
@@ -13,40 +16,40 @@ class Quizes extends Component {
         this.state = {
             data,
             currentCardIndex: 0,
-            answers: new Array(data.length).fill(null),
+            userAnswers: new Array(data.length).fill(null),
             grade: null,
         };
     }
 
     handleAnswerChange = e => {
-        const { data, answers, currentCardIndex } = this.state;
+        const { data, currentCardIndex, userAnswers } = this.state;
 
         const quiz = data[currentCardIndex];
         const hasOneAnswer = quiz.correctAnswers.length === 1;
 
-        let _answers = [...answers];
-        let cardAnswers = _answers[currentCardIndex];
+        let _userAnswers = [...userAnswers];
+        let _cardAnswers = _userAnswers[currentCardIndex];
 
         const value = e.target.value;
 
-        if (cardAnswers === null) {
-            cardAnswers = [];
-            cardAnswers.push(value);
+        if (_cardAnswers === null) {
+            _cardAnswers = [];
+            _cardAnswers.push(value);
         } else {
             if (hasOneAnswer) {
-                cardAnswers[0] = value;
+                _cardAnswers[0] = value;
             } else {
-                const index = cardAnswers.indexOf(value);
+                const index = _cardAnswers.indexOf(value);
                 if (index === -1) {
-                    cardAnswers.push(value);
+                    _cardAnswers.push(value);
                 } else {
-                    cardAnswers.splice(index, 1);
+                    _cardAnswers.splice(index, 1);
                 }
             }
         }
 
-        _answers[currentCardIndex] = cardAnswers;
-        this.setState({ answers: _answers });
+        _userAnswers[currentCardIndex] = _cardAnswers;
+        this.setState({ userAnswers: _userAnswers });
     };
 
     handlePrevClick = () => {
@@ -58,10 +61,10 @@ class Quizes extends Component {
     };
 
     handleCalculateGrade = () => {
-        const { data, answers } = this.state;
+        const { data, userAnswers } = this.state;
 
         const calculate = () => {
-            let userAnswers = [...answers];
+            let answers = [...userAnswers];
             
             let correctAnswersNumber = 0;
             let correctUserAnswersNumber = 0;
@@ -70,18 +73,18 @@ class Quizes extends Component {
                 const correctCardAnswers = data[i].correctAnswers;
                 correctAnswersNumber += correctCardAnswers.length;
 
-                if (userAnswers[i] === null) {
-                    userAnswers[i] = [];
+                if (answers[i] === null) {
+                    answers[i] = [];
                 }
 
                 if (correctCardAnswers.length === 1) {
-                    userAnswers[i][0] === correctCardAnswers[0]
+                    answers[i][0] === correctCardAnswers[0]
                         ? correctAnswersNumber++
                         : correctUserAnswersNumber -= correctUserAnswersNumber/10;
                 } else {
                     for (var j = 0; j < correctCardAnswers.length; j++) {
                         const cardCorrectAnswer = correctCardAnswers[j];
-                        if (userAnswers[i].includes(cardCorrectAnswer)) {
+                        if (answers[i].includes(cardCorrectAnswer)) {
                             correctUserAnswersNumber++;
                         } else {
                             correctUserAnswersNumber -= correctUserAnswersNumber/10;
@@ -97,7 +100,7 @@ class Quizes extends Component {
 
         let emptyAnswersIndexes = [];
 
-        answers.forEach((answer, index) => {
+        userAnswers.forEach((answer, index) => {
             if (answer === null) {
                 emptyAnswersIndexes.push(index + 1);
             }
@@ -130,22 +133,41 @@ class Quizes extends Component {
         const {
             data,
             currentCardIndex,
-            answers,
+            userAnswers,
             grade,
         } = this.state;
 
+        const isPrevDisabled = currentCardIndex === 0 ? true : false;
+        const isDone = currentCardIndex === data.length - 1 ? true : false;
+
+        if (grade !== null) return (
+            <>
+                <H1 title="Result" />
+                <p className="result">Your grade is: {grade}</p>
+                <div className="button-group">
+                    <Button text="Try again" onClick={this.handleRestart} />
+                </div>
+            </>
+
+        );
+    
         return (
-            <Card
-                data={data}
-                currentCardIndex={currentCardIndex}
-                answers={answers}
-                grade={grade}
-                handleAnswerChange={this.handleAnswerChange}
-                handlePrevClick={this.handlePrevClick}
-                handleNextClick={this.handleNextClick}
-                handleCalculateGrade={this.handleCalculateGrade}
-                handleRestart={this.handleRestart}
-            />
+            <>
+                <H1 title={`Quiz: ${currentCardIndex + 1} of ${data.length}`} />
+                <Card
+                    data={data}
+                    currentCardIndex={currentCardIndex}
+                    userAnswers={userAnswers}
+                    onInputChange={this.handleAnswerChange}
+                />
+                <Controls
+                    isPrevDisabled={isPrevDisabled}
+                    isDone={isDone}
+                    handlePrevClick={this.handlePrevClick}
+                    handleNextClick={this.handleNextClick}
+                    handleCalculateGrade={this.handleCalculateGrade}
+                />
+            </>
         );
     }
 }
