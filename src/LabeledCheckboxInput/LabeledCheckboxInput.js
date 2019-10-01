@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.css';
 
-const labeledCheckboxInput = ({ id, name, value, currentValue, onChange }) => {
+const LabeledCheckboxInput = ({ id, name, value, currentValue, onChange }) => {
     return (
         <div className="radio-item">
             <input
@@ -18,4 +18,4 @@ const labeledCheckboxInput = ({ id, name, value, currentValue, onChange }) => {
     );
 }
 
-export default labeledCheckboxInput;
+export default LabeledCheckboxInput;

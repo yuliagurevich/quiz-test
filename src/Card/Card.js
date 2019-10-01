@@ -4,7 +4,7 @@ import LabeledRadioInput from "../LabeledRadioInput/LabeledRadioInput";
 import LabeledCheckboxInput from "../LabeledCheckboxInput/LabeledCheckboxInput";
 
 
-const card = ({
+const Card = ({
     data,
     currentCardIndex,
     userAnswers,
@@ -13,6 +13,8 @@ const card = ({
     let quiz = data[currentCardIndex];
     let currentValue = userAnswers[currentCardIndex];
     let answers;
+
+    if (quiz.correctAnswers === undefined) return null;
 
     if (quiz.correctAnswers.length !== 1) {
         answers = renderCheckboxes(quiz, currentValue, onInputChange);
@@ -52,4 +54,4 @@ const renderRadioButtons = (quiz, currentValue, onInputChange) => {
     />);
 }
 
-export default card;
+export default Card;

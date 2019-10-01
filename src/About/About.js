@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const about = () => {
+const About = () => {
     const quizLink = <Link to="/quizes">Take the quiz</Link>
 
     return (
@@ -12,4 +12,4 @@ const about = () => {
     );
 }
 
-export default about;
+export default About;

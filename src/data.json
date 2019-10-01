@@ -1,43 +1,186 @@
 [
     {
-        "question": "Q1",
-        "answers": [
-            "A1",
-            "A2",
-            "A3",
-            "A4"
-        ],
-        "correctAnswers": ["A3"]
+        "quizName": "First quiz",
+        "quiz": [
+            {
+                "question": "Q1",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4"
+                ],
+                "correctAnswers": ["A3"]
+            },
+            {
+                "question": "Q2",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4",
+                    "A5"
+                ],
+                "correctAnswers": ["A1", "A4", "A5"]
+            },
+            {
+                "question": "Q3",
+                "answers": [
+                    "A1",
+                    "A2"
+                ],
+                "correctAnswers": ["A1"]
+            },
+            {
+                "question": "Q4",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4",
+                    "A5",
+                    "A6"
+                ],
+                "correctAnswers": ["A2", "A3", "A5"]
+            }
+        ]
     },
     {
-        "question": "Q2",
-        "answers": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5"
-        ],
-        "correctAnswers": ["A1", "A4", "A5"]
+        "quizName": "Second quiz",
+        "quiz": [
+            {
+                "question": "Q1",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4"
+                ],
+                "correctAnswers": ["A3"]
+            },
+            {
+                "question": "Q2",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4",
+                    "A5"
+                ],
+                "correctAnswers": ["A1", "A4", "A5"]
+            },
+            {
+                "question": "Q3",
+                "answers": [
+                    "A1",
+                    "A2"
+                ],
+                "correctAnswers": ["A1"]
+            },
+            {
+                "question": "Q4",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4",
+                    "A5",
+                    "A6"
+                ],
+                "correctAnswers": ["A2", "A3", "A5"]
+            }
+        ]
     },
     {
-        "question": "Q3",
-        "answers": [
-            "A1",
-            "A2"
-        ],
-        "correctAnswers": ["A1"]
+        "quizName": "Third quiz",
+        "quiz": [
+            {
+                "question": "Q1",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4"
+                ],
+                "correctAnswers": ["A3"]
+            },
+            {
+                "question": "Q2",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4",
+                    "A5"
+                ],
+                "correctAnswers": ["A1", "A4", "A5"]
+            },
+            {
+                "question": "Q3",
+                "answers": [
+                    "A1",
+                    "A2"
+                ],
+                "correctAnswers": ["A1"]
+            },
+            {
+                "question": "Q4",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4",
+                    "A5",
+                    "A6"
+                ],
+                "correctAnswers": ["A2", "A3", "A5"]
+            }
+        ]
     },
     {
-        "question": "Q4",
-        "answers": [
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5",
-            "A6"
-        ],
-        "correctAnswers": ["A2", "A3", "A5"]
+        "quizName": "Fourth quiz",
+        "quiz": [
+            {
+                "question": "Q1",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4"
+                ],
+                "correctAnswers": ["A3"]
+            },
+            {
+                "question": "Q2",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4",
+                    "A5"
+                ],
+                "correctAnswers": ["A1", "A4", "A5"]
+            },
+            {
+                "question": "Q3",
+                "answers": [
+                    "A1",
+                    "A2"
+                ],
+                "correctAnswers": ["A1"]
+            },
+            {
+                "question": "Q4",
+                "answers": [
+                    "A1",
+                    "A2",
+                    "A3",
+                    "A4",
+                    "A5",
+                    "A6"
+                ],
+                "correctAnswers": ["A2", "A3", "A5"]
+            }
+        ]
     }
 ]

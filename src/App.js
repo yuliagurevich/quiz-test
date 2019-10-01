@@ -9,7 +9,7 @@ import "./App.css";
 const App = () => {
   return (
     <Router>
-      <header id="main-header"> 
+      <header> 
         <nav>
           <ul id="main-menu-container">
             <li><NavLink to="/">About</NavLink></li>
@@ -17,7 +17,7 @@ const App = () => {
           </ul>
         </nav>
       </header>
-      <main className="main-container">
+      <main id="main-container">
         <Switch>
           <Route exact path="/" component={About} />
           <Route path="/quizes" component={Quizes} />

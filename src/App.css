@@ -8,15 +8,14 @@ body {
   /* background-color: #EBE9ED; */
 }
 
-#main-header {
+#main-menu-container {
+  display: flex;
+  justify-content: center;
   background-color: #591426;
 }
 
-#main-menu-container {
-  display: flex;
-}
-
-#main-menu-container li {
+#main-menu-container li,
+#side-menu li {
   display: block;
   padding: 10px 20px;
 }
@@ -28,14 +27,30 @@ body {
   font-weight: 400;
 }
 
+#side-menu a {
+  text-decoration: none;
+}
+
+#side-menu li:hover {
+  background-color: beige;
+}
+
 .section-header {
   font-size: 1rem;
   font-weight: 600;
   margin: 0 0 20px 0;
 }
 
-.main-container {
-  padding: 20px;
+#main-container {
+  display: flex;
+  align-items: stretch;
+}
+
+#side-menu {
+  width: 20%;
+}
+
+#section-container {
 }
 
 .header {

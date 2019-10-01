@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../Button/Button';
 
-const controls = ({
+const Controls = ({
     isPrevDisabled,
     isDone,
     handlePrevClick,
@@ -33,4 +33,4 @@ const controls = ({
     );
 }
 
-export default controls;
+export default Controls;

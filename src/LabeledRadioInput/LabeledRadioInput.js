@@ -1,6 +1,6 @@
 import React from "react";
 
-const labeledRadioInput = ({ id, name, value, currentValue, onChange }) => {
+const LabeledRadioInput = ({ id, name, value, currentValue, onChange }) => {
     return (
         <div className="radio-item">
             <input
@@ -16,4 +16,4 @@ const labeledRadioInput = ({ id, name, value, currentValue, onChange }) => {
     );
 };
 
-export default labeledRadioInput;
+export default LabeledRadioInput;

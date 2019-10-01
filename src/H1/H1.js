@@ -1,6 +1,6 @@
 import React from 'react';
 
-const h1 = ({
+const H1 = ({
     title,
 }) => {
     return (
@@ -8,4 +8,4 @@ const h1 = ({
     );
 }
 
-export default h1;
+export default H1;
