@@ -7,7 +7,7 @@ const controls = ({
     isDone,
     handlePrevClick,
     handleNextClick,
-    handleCalculateGrade,
+    handleDoneClick,
 }) => {
     const PrevButton = <Button
         text="Previous"
@@ -22,7 +22,7 @@ const controls = ({
 
     const DoneButton = <Button
         text="Done"
-        onClick={handleCalculateGrade}
+        onClick={handleDoneClick}
     />;
 
     return (

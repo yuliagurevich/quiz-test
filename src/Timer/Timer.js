@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const Timer = ({ totalTime, isPaused }) => {
+const Timer = ({ totalTime, isPaused, onTimeOut }) => {
     const [time, setTime] = useState(totalTime);
     const savedCallback = useRef();
     let delay = isPaused ? Number.MAX_SAFE_INTEGER : 1000;
@@ -10,6 +10,9 @@ const Timer = ({ totalTime, isPaused }) => {
     }
 
     useEffect(() => {
+        if (time === 0) {
+            onTimeOut();
+        }
         savedCallback.current = callback;
     });
 

@@ -15,12 +15,14 @@ class Quizes extends Component {
         super(props);
 
         this.state = {
-            isStarted: false,
             data,
             currentCardIndex: 0,
+
             userAnswers: new Array(data.length).fill(null),
-            isTimerPaused: false,
             grade: null,
+
+            isStarted: false,
+            isTimerPaused: false,
         };
     }
 
@@ -71,43 +73,13 @@ class Quizes extends Component {
         });
     };
 
-    handleCalculateGrade = () => {
-        const { data, userAnswers } = this.state;
+    handleTimeOut = () => {
+        const grade = this.calculateGrade();
+        this.setState({ grade });
+    }
 
-        const calculate = () => {
-            let answers = [...userAnswers];
-            
-            let correctAnswersNumber = 0;
-            let correctUserAnswersNumber = 0;
-            
-            for (var i = 0; i < data.length; i++) {
-                const correctCardAnswers = data[i].correctAnswers;
-                correctAnswersNumber += correctCardAnswers.length;
-
-                if (answers[i] === null) {
-                    answers[i] = [];
-                }
-
-                if (correctCardAnswers.length === 1) {
-                    answers[i][0] === correctCardAnswers[0]
-                        ? correctAnswersNumber++
-                        : correctUserAnswersNumber -= correctUserAnswersNumber/10;
-                } else {
-                    for (var j = 0; j < correctCardAnswers.length; j++) {
-                        const cardCorrectAnswer = correctCardAnswers[j];
-                        if (answers[i].includes(cardCorrectAnswer)) {
-                            correctUserAnswersNumber++;
-                        } else {
-                            correctUserAnswersNumber -= correctUserAnswersNumber/10;
-                        }
-                    }
-                }
-            }
-
-            let grade = (correctUserAnswersNumber / correctAnswersNumber * 100).toFixed(1);
-
-            this.setState({ grade });
-        }
+    handleDoneClick = () => {
+        const { userAnswers } = this.state;
 
         let emptyAnswersIndexes = [];
 
@@ -116,6 +88,10 @@ class Quizes extends Component {
                 emptyAnswersIndexes.push(index + 1);
             }
         });
+
+        const calculate = () => {
+            this.setState({ grade: this.calculateGrade() });
+        }
 
         if (emptyAnswersIndexes.length === 0) {
             calculate();
@@ -140,12 +116,50 @@ class Quizes extends Component {
         })
     };
 
+
+    calculateGrade = () => {
+        const { userAnswers, data } = this.state;
+        let answers = [...userAnswers];
+        
+        let correctAnswersNumber = 0;
+        let correctUserAnswersNumber = 0;
+        
+        for (var i = 0; i < data.length; i++) {
+            const correctCardAnswers = data[i].correctAnswers;
+            correctAnswersNumber += correctCardAnswers.length;
+
+            if (answers[i] === null) {
+                answers[i] = [];
+            }
+
+            if (correctCardAnswers.length === 1) {
+                answers[i][0] === correctCardAnswers[0]
+                    ? correctAnswersNumber++
+                    : correctUserAnswersNumber -= correctUserAnswersNumber/10;
+            } else {
+                for (var j = 0; j < correctCardAnswers.length; j++) {
+                    const cardCorrectAnswer = correctCardAnswers[j];
+                    if (answers[i].includes(cardCorrectAnswer)) {
+                        correctUserAnswersNumber++;
+                    } else {
+                        correctUserAnswersNumber -= correctUserAnswersNumber/10;
+                    }
+                }
+            }
+        }
+
+        let grade = (correctUserAnswersNumber / correctAnswersNumber * 100).toFixed(1);
+        return grade;
+    }
+
     render() {
         const {
             data,
             currentCardIndex,
+
             userAnswers,
             grade,
+
             isStarted,
             isTimerPaused,
         } = this.state;
@@ -177,7 +191,7 @@ class Quizes extends Component {
     
         return (
             <>
-                <TestTimer totalTime={300} isPaused={isTimerPaused} />
+                <TestTimer totalTime={60} isPaused={isTimerPaused} onTimeOut={this.handleTimeOut} />
                 <H1 title={`Quiz: ${currentCardIndex + 1} of ${data.length}`} />
                 <Card
                     data={data}
@@ -190,7 +204,7 @@ class Quizes extends Component {
                     isDone={isDone}
                     handlePrevClick={this.handlePrevClick}
                     handleNextClick={this.handleNextClick}
-                    handleCalculateGrade={this.handleCalculateGrade}
+                    handleDoneClick={this.handleDoneClick}
                 />
             </>
         );
