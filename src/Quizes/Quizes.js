@@ -124,7 +124,7 @@ class Quizes extends Component {
     handleRestart = () => {
         this.setState({
             currentCardIndex: 0,
-            answers: new Array(data.length).fill(null),
+            userAnswers: new Array(data.length).fill(null),
             grade: null,
         })
     }
