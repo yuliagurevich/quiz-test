@@ -45,12 +45,20 @@ body {
   font-weight: 400;
 }
 
+#timer {
+  border: 1px solid #591426;
+  width: 200px;
+  padding: 5px;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .card {
   position: relative;
   width: 400px;
   border: 1px solid #87807D;
   box-shadow: 2px 3px 2px #595553;
-  margin: 40px auto;
+  margin: 0 auto;
   padding: 25px;
 }
 

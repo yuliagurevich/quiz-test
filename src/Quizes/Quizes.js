@@ -19,6 +19,7 @@ class Quizes extends Component {
             data,
             currentCardIndex: 0,
             userAnswers: new Array(data.length).fill(null),
+            isTimerPaused: false,
             grade: null,
         };
     }
@@ -63,7 +64,11 @@ class Quizes extends Component {
     };
 
     handleNextClick = () => {
-        this.setState({ currentCardIndex: this.state.currentCardIndex + 1 });
+        const isTimerPaused = this.state.currentCardIndex === this.state.data.length - 1;
+        this.setState({
+            currentCardIndex: this.state.currentCardIndex + 1,
+            isTimerPaused
+        });
     };
 
     handleCalculateGrade = () => {
@@ -142,11 +147,14 @@ class Quizes extends Component {
             userAnswers,
             grade,
             isStarted,
+            isTimerPaused,
         } = this.state;
 
         const isPrevDisabled = currentCardIndex === 0 ? true : false;
         const isDone = currentCardIndex === data.length - 1 ? true : false;
 
+        // The Router can be used...? Extract components... Render routes...
+        // Redux is comming...
         if (!isStarted) {
             return (
                 <>
@@ -169,8 +177,8 @@ class Quizes extends Component {
     
         return (
             <>
+                <TestTimer totalTime={300} isPaused={isTimerPaused} />
                 <H1 title={`Quiz: ${currentCardIndex + 1} of ${data.length}`} />
-                <TestTimer totalTime={300} />
                 <Card
                     data={data}
                     currentCardIndex={currentCardIndex}

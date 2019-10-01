@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const Timer = ({ totalTime }) => {
+const Timer = ({ totalTime, isPaused }) => {
     const [time, setTime] = useState(totalTime);
     const savedCallback = useRef();
+    let delay = isPaused ? Number.MAX_SAFE_INTEGER : 1000;
 
     const callback = () => {
         setTime(time - 1);
@@ -17,12 +18,12 @@ const Timer = ({ totalTime }) => {
             savedCallback.current();
         }
         console.count();
-        let timer = setInterval(tick, 1000);
+        let timer = setInterval(tick, delay);
         return () => clearInterval(timer);
-    }, []);
+    }, [delay]);
 
     return (
-        <div>
+        <div id="timer">
             <p>Left:</p>
             <p>{`${Math.floor(time / 60)} minutes ${(time % 60).toFixed(0)} seconds`}</p>
         </div>
