@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import H1 from '../H1/H1';
+import TestTimer from '../Timer/Timer';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
 import Controls from '../Controls/Controls';
@@ -14,12 +15,17 @@ class Quizes extends Component {
         super(props);
 
         this.state = {
+            isStarted: false,
             data,
             currentCardIndex: 0,
             userAnswers: new Array(data.length).fill(null),
             grade: null,
         };
     }
+
+    handleStart = () => {
+        this.setState({ isStarted: true });
+    };
 
     handleAnswerChange = e => {
         const { data, currentCardIndex, userAnswers } = this.state;
@@ -127,7 +133,7 @@ class Quizes extends Component {
             userAnswers: new Array(data.length).fill(null),
             grade: null,
         })
-    }
+    };
 
     render() {
         const {
@@ -135,10 +141,20 @@ class Quizes extends Component {
             currentCardIndex,
             userAnswers,
             grade,
+            isStarted,
         } = this.state;
 
         const isPrevDisabled = currentCardIndex === 0 ? true : false;
         const isDone = currentCardIndex === data.length - 1 ? true : false;
+
+        if (!isStarted) {
+            return (
+                <>
+                    <p>Are you ready to start?</p>
+                    <Button text="Start" onClick={this.handleStart} />
+                </>
+            );
+        }
 
         if (grade !== null) return (
             <>
@@ -154,6 +170,7 @@ class Quizes extends Component {
         return (
             <>
                 <H1 title={`Quiz: ${currentCardIndex + 1} of ${data.length}`} />
+                <TestTimer totalTime={300} />
                 <Card
                     data={data}
                     currentCardIndex={currentCardIndex}
