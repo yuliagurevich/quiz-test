@@ -2,6 +2,8 @@ import React from 'react';
 
 import Button from '../Button/Button';
 
+import './style.css';
+
 const Controls = ({
     isPrevDisabled,
     isDone,

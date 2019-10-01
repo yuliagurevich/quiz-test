@@ -12,7 +12,7 @@ class Quiz extends Component {
     constructor(props) {
         super(props);
         const { quiz } = props.data;
-        console.log(quiz);
+        console.log(props.data);
 
         this.state = {
             data: quiz,
@@ -171,6 +171,8 @@ class Quiz extends Component {
             isTimerPaused,
         } = this.state;
 
+        const { quizName } = this.props.data;
+
         const isPrevDisabled = currentCardIndex === 0 ? true : false;
         const isDone = currentCardIndex === data.length - 1 ? true : false;
 
@@ -179,16 +181,19 @@ class Quiz extends Component {
         if (!isStarted) {
             return (
                 <>
-                    <p>Are you ready to start?</p>
-                    <Button text="Start" onClick={this.handleStart} />
+                    <H1 title={quizName} />
+                    <p className="centered-paragraph">Are you ready to start?</p>
+                    <div className="button-group">
+                        <Button text="Start" onClick={this.handleStart} />
+                    </div>
                 </>
             );
         }
 
         if (grade !== null) return (
             <>
-                <H1 title="Result" />
-                <p className="result">Your grade is: {grade}</p>
+                <H1 title={quizName} />
+                <p className="centered-paragraph">Your grade is: {grade}</p>
                 <div className="button-group">
                     <Button text="Try again" onClick={this.handleRestart} />
                 </div>
@@ -198,8 +203,9 @@ class Quiz extends Component {
     
         return (
             <>
+                <H1 title={quizName} />
                 <TestTimer totalTime={60} isPaused={isTimerPaused} onTimeOut={this.handleTimeOut} />
-                <H1 title={`Quiz: ${currentCardIndex + 1} of ${data.length}`} />
+                <p className="centered-paragraph">{`Quiz: ${currentCardIndex + 1} of ${data.length}`}</p>
                 <Card
                     data={data}
                     currentCardIndex={currentCardIndex}

@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+import './style.css';
+
 const Timer = ({ totalTime, isPaused, onTimeOut }) => {
     const [time, setTime] = useState(totalTime);
     const savedCallback = useRef();
@@ -26,10 +28,7 @@ const Timer = ({ totalTime, isPaused, onTimeOut }) => {
     }, [delay]);
 
     return (
-        <div id="timer">
-            <p>Left:</p>
-            <p>{`${Math.floor(time / 60)} minutes ${(time % 60).toFixed(0)} seconds`}</p>
-        </div>
+        <p className="centered-paragraph">{`Left: ${Math.floor(time / 60)} minutes ${(time % 60).toFixed(0)} seconds`}</p>
     );
 }
 

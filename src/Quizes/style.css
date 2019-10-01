@@ -1,0 +1,28 @@
+/* Quizes container */
+#quizes-container {
+    display: flex;
+    align-items: stretch;
+}
+
+/* Quizes side menu */
+#side-menu {
+    width: 20%;
+}
+
+#side-menu li {
+    padding: 10px 20px;
+}
+
+#side-menu a {
+    text-decoration: none;
+}
+
+#side-menu li:hover {
+    background-color: beige;
+}
+
+/* Quiz container */
+#quiz-container {
+    width: 100%;
+    padding: 20px;
+}

@@ -5,13 +5,15 @@ import Quiz from '../Quiz/Quiz';
 
 import quizesList from '../data.json';
 
+import './style.css';
+
 const Quizes = (props) => {
     const renderQuizesList = () => {
         return quizesList.map(({quizName}) => {
             let url = quizName.replace(' ', '-');
 
             return (
-                <li><NavLink to={`${props.match.url}/${url.toLowerCase()}`}>{quizName}</NavLink></li>
+                <NavLink key={url} to={`${props.match.url}/${url.toLowerCase()}`}><li>{quizName}</li></NavLink>
             );
         });
     }
@@ -19,28 +21,25 @@ const Quizes = (props) => {
     const renderQuizesRoutes = () => {
         return quizesList.map((quiz) => {
             const { quizName } = quiz;
-
             let url = quizName.replace(' ', '-');
-
-            console.log(`${props.match.url}/${url.toLowerCase()}`);
             
             return (
-                <Route exact path={`${props.match.url}/${url.toLowerCase()}`} render={(props) => <Quiz data={quiz} {...props} />} />
+                <Route key={url} exact path={`${props.match.url}/${url.toLowerCase()}`} render={(props) => <Quiz data={quiz} {...props} />} />
             );
         });
     }
     
     return (
-        <>
+        <section id="quizes-container">
             <nav id="side-menu">
                 <ul>
                     {renderQuizesList()}
                 </ul>
             </nav>
-            <section id="section-container">
+            <section id="quiz-container">
                 {renderQuizesRoutes()}
             </section>
-        </>
+        </section>
     );
 }
 

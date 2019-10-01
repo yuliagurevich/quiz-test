@@ -3,6 +3,7 @@ import React from 'react';
 import LabeledRadioInput from "../LabeledRadioInput/LabeledRadioInput";
 import LabeledCheckboxInput from "../LabeledCheckboxInput/LabeledCheckboxInput";
 
+import './style.css';
 
 const Card = ({
     data,

@@ -10,19 +10,19 @@ const App = () => {
   return (
     <Router>
       <header> 
-        <nav>
-          <ul id="main-menu-container">
-            <li><NavLink to="/">About</NavLink></li>
-            <li><NavLink to="/quizes">Quiz</NavLink></li>
+        <nav id="main-menu-container">
+          <ul>
+            <NavLink to="/"><li>About</li></NavLink>
+            <NavLink to="/quizes"><li>Quiz</li></NavLink>
           </ul>
         </nav>
       </header>
-      <main id="main-container">
+      <main>
         <Switch>
           <Route exact path="/" component={About} />
           <Route path="/quizes" component={Quizes} />
         </Switch>
-      </main>
+    </main>
     </Router>
   );
 };

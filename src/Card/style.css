@@ -1,0 +1,25 @@
+.card {
+    position: relative;
+    width: 400px;
+    border: 1px solid #87807D;
+    box-shadow: 2px 3px 2px #595553;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+.question {
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.radio-group {
+    margin: 0 20px;
+}
+
+.radio-item {
+    margin: 10px 0;
+}
+
+.radio-item label {
+    margin: 0 0 0 15px;
+}
